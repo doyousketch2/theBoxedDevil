@@ -8,7 +8,7 @@ Used the Denver custom waveform generator to create it.
 https://github.com/superzazu/denver.lua  
 No need to download, it's included.  
 
-Found the lyrics here  https://www.8notes.com/scores/6844.asp
+Found the lyrics here  https://www.8notes.com/scores/6844.asp  
 They're also included, and show up, karaoke style.  
 
 Click or press your screen for various effects.  
