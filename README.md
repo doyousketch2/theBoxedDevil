@@ -12,8 +12,8 @@ Found the lyrics here  https://www.8notes.com/scores/6844.asp
 They're also included, and show up, karaoke style.  
 
 Click or press your screen for various effects.  
-Left - Right control volume  
-Up - Down controls tempo  
+Left & Right  =  Volume  
+Up & Down  =  Tempo  
 
 It was fun for a couple hours of coding.  
 
