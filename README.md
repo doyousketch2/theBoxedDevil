@@ -1,8 +1,8 @@
 # theBoxedDevil
 Love2D jack-in-the-box,  Löve theBoxedDevil  
 
-You'll need Love2D to run this.  https://love2d.org  
-If you don't have it, get it.  
+You'll need Love2D to run this.  
+https://love2d.org  If you don't have it, get it.  
 
 Used the Denver custom waveform generator to create it.  
 https://github.com/superzazu/denver.lua  
