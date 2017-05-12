@@ -16,5 +16,6 @@ Left & Right  =  Volume
 Up & Down  =  Tempo  
 
 It was fun for a couple hours of coding.  
+Practice sync'ing up graphics with the sound library.  
 
 ![img](https://pbs.twimg.com/media/C_nHsNcXkAAAg39.png)
