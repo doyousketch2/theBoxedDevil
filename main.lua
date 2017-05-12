@@ -29,18 +29,22 @@ WIDTH  = lg .getWidth()
 denver  = require 'libs.denver'  -- waveform gen
 class = require 'libs.middleclass'
 score = require 'libs.scorereader' -- requires middleclass
-
 song = require 'data.song'
 lyrics = require 'data.lyrics'
-line = 1
 
+line = 1
+R = 0
+W = 0
 x = 0
 y = 0
+wid = 5
 quads = {}
 frames = 1
 frame = 1
 note = 1
+tempo = 0
 previousNote = 1
+
 font = lg .newFont( 15 )
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -76,13 +80,15 @@ function lo .update(dt)
       x = lmo .getX()
       y = lmo .getY()
       la .setVolume( x / WIDTH )
-      player :setTempo( 800 - y )
+      tempo = 800 - y
+      player :setTempo( tempo )
     else
       touches = lto .getTouches()  -- phone / tablet
       for i, id in ipairs(touches) do
         x, y = lto .getPosition(id)
         la .setVolume( x / WIDTH )
-        player :setTempo( 800 - y )
+        tempo = 800 - y
+        player :setTempo( tempo )
       end -- i, id in ipairs
     end -- lmo .isDown  mouse
 
@@ -114,15 +120,32 @@ end -- lo .update(dt)
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function lo .draw()
-  lg .draw( handle,  quads[frame],  WIDTH * .6,  HEIGHT / 2,  0,  6,  6 )  -- handle
+-- handle
+  lg .draw( handle,  quads[frame],  WIDTH * .6,  HEIGHT / 2,  0,  6,  6 )
 
-  lg .draw( box,  WIDTH / 3,  HEIGHT / 2,  0,  14,  14 )  -- box
+-- box
+  lg .draw( box,  WIDTH / 3,  HEIGHT / 2,  0,  14,  14 )
 
+-- pop
   if note == 26 or note == 54 then
-    lg .draw( lid,  WIDTH / 3,  HEIGHT / 5,  0,  14,  14 )  -- pop
+    R = 150
+    W = 18
+    lg .draw( lid,  WIDTH / 3,  HEIGHT / 5,  0,  14,  14 )
+  else
+    R = 0
+    W = 0
   end  -- note ==
 
-  lg .draw( karaoke,  WIDTH * .1,  HEIGHT * .05,  0,  2,  2 )  -- lyrics
+-- border
+  vol = la .getVolume()
+  lg .setLineWidth( wid * 2 + W )
+  lg .setColor( R,  vol * tempo,  vol * tempo / 2 )
+          -- topL,            topR,           bottomR,           bottomL,         topL again
+  lg .line(wid, wid,  WIDTH-wid, wid,  WIDTH-wid, HEIGHT-wid,  wid, HEIGHT-wid,  wid, wid)
+
+-- lyrics
+  lg .setColor( 255,  255,  255 )
+  lg .draw( karaoke,  WIDTH * .1,  HEIGHT * .05,  0,  2,  2 )
 end  -- lo .draw
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,4 +155,3 @@ function lo .quit()
 end  -- lo .quit
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
